@@ -1,15 +1,13 @@
 package kea.sem3.jwtdemo.configuration;
 
 import kea.sem3.jwtdemo.entity.*;
+import kea.sem3.jwtdemo.repositories.CarRepository;
 import kea.sem3.jwtdemo.repositories.MemberRepo;
 import kea.sem3.jwtdemo.security.UserRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
-
-import java.time.LocalDate;
-import java.time.Month;
 
 @Controller
 @Profile("!test")
@@ -18,10 +16,12 @@ public class MakeTestData implements ApplicationRunner {
 
     UserRepository userRepository;
     MemberRepo memberRepo;
+    CarRepository carRepo;
 
-    public MakeTestData(UserRepository userRepository, MemberRepo memberRepo) {
+    public MakeTestData(UserRepository userRepository, MemberRepo memberRepo, CarRepository carRepo) {
         this.userRepository = userRepository;
         this.memberRepo = memberRepo;
+        this.carRepo = carRepo;
     }
 
     public  void makePlainUsers(){
@@ -43,6 +43,12 @@ public class MakeTestData implements ApplicationRunner {
         userRepository.save(m1);
 
 
+        Car car1 = new Car("Toyota1", "1993", 421);
+        carRepo.save(car1);
+
+
+
+
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");
         System.out.println("#################################### WARNING ! #########################################");
@@ -57,6 +63,7 @@ public class MakeTestData implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
 
         userRepository.deleteAll();
 
