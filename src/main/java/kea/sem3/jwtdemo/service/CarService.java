@@ -32,11 +32,14 @@ public class CarService {
         return new CarResponse(carnew, false);
     }
 
+    //Mangler delete del
     public CarResponse editCar(CarRequest body,int id){
         return null;
     }
 
     public void deleteCar(int id) {
+        carRepository.deleteById(id);
+
     }
 }
 
