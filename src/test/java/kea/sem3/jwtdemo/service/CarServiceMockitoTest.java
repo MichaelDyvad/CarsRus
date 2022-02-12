@@ -33,6 +33,7 @@ class CarServiceMockitoTest {
 
     }
 
+    /*
     @Test
     void testGetCars() {
         Mockito.when(carRepository.findAll()).thenReturn(List.of(
@@ -61,8 +62,7 @@ class CarServiceMockitoTest {
         assertEquals(1000,res.getId());
     }
 
-
-
+     */
 
 }
 
