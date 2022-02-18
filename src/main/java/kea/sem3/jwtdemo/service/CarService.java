@@ -32,14 +32,20 @@ public class CarService {
         return new CarResponse(carnew, false);
     }
 
-    //Mangler delete del
-    public CarResponse editCar(CarRequest body,int id){
-        return null;
+    public void editCar( CarRequest carToEdit, int carId){
+        Car car = carRepository.findById(carId).orElseThrow(()-> new Client4xxException("No car with provided ID found"));
+        car.setBrand(carToEdit.getCarBrand());
+        car.setModel(carToEdit.getModel());
+        car.setPricePrDay(carToEdit.getPricePrDay());
+        carRepository.save(car);
     }
 
-    public void deleteCar(int id) {
-        carRepository.deleteById(id);
-
+    //Service method for PATCH
+    public void updatePrice(int carId,double newPricePrDay){
+        Car car = carRepository.getById(carId);
+        car.setPricePrDay(newPricePrDay);
+        carRepository.save(car);
     }
+
 }
 

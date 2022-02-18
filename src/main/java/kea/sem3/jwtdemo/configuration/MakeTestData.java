@@ -3,11 +3,14 @@ package kea.sem3.jwtdemo.configuration;
 import kea.sem3.jwtdemo.entity.*;
 import kea.sem3.jwtdemo.repositories.CarRepository;
 import kea.sem3.jwtdemo.repositories.MemberRepo;
+import kea.sem3.jwtdemo.repositories.ReservationRepo;
 import kea.sem3.jwtdemo.security.UserRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
+
+import java.time.LocalDate;
 
 @Controller
 @Profile("!test")
@@ -17,11 +20,13 @@ public class MakeTestData implements ApplicationRunner {
     UserRepository userRepository;
     MemberRepo memberRepo;
     CarRepository carRepo;
+    ReservationRepo reservationRepo;
 
-    public MakeTestData(UserRepository userRepository, MemberRepo memberRepo, CarRepository carRepo) {
+    public MakeTestData(UserRepository userRepository, MemberRepo memberRepo, CarRepository carRepo, ReservationRepo reservationRepo) {
         this.userRepository = userRepository;
         this.memberRepo = memberRepo;
         this.carRepo = carRepo;
+        this.reservationRepo = reservationRepo;
     }
 
     public  void makePlainUsers(){
@@ -46,8 +51,9 @@ public class MakeTestData implements ApplicationRunner {
         Car car1 = new Car("Toyota1", "1993", 421);
         carRepo.save(car1);
 
-
-
+        //Create a reservation
+        Reservation res1 = new Reservation(LocalDate.of(2022, 3, 1), car1, m1);
+        reservationRepo.save(res1);
 
         System.out.println("########################################################################################");
         System.out.println("########################################################################################");
