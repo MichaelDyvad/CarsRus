@@ -13,6 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarControllerTest {
+    /*
     @Autowired
     CarService carService;
 
@@ -37,4 +38,6 @@ class CarControllerTest {
     @Test
     void addCar() {
     }
+
+     */
 }
