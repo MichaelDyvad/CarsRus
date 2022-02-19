@@ -41,6 +41,7 @@ class CarServiceInMemoryTest
         assertThat(carResponses, containsInAnyOrder(hasProperty("model", is("C40")), hasProperty("model", is("Up"))));
     }
 
+    /*
     @Test
     void getCar() throws Exception {
         //assertEquals(carService.getCar(1, false), 1);
@@ -55,5 +56,7 @@ class CarServiceInMemoryTest
     @Test
     void deleteCar() {
     }
+
+     */
 }
 
