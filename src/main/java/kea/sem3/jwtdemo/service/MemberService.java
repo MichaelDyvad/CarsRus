@@ -43,4 +43,16 @@ public class MemberService {
         return new MemberResponse(member.getUsername(), member.getCreated(), member.getRoles());
     }
 
+    public void editMember(MemberRequest memberToEdit, String memberId){
+        Member member = memberRepo.findById(memberId).orElseThrow(()-> new Client4xxException("no member found on id"));
+        member.setFirstName(memberToEdit.getFirstName());
+        member.setLastName(memberToEdit.getLastName());
+        member.setEmail(memberToEdit.getEmail());
+        memberRepo.save(member);
+    }
+
+    public void deleteMeber(String id){
+        memberRepo.deleteById(id);
+    }
+
 }

@@ -1,5 +1,6 @@
 package kea.sem3.jwtdemo.service;
 
+import kea.sem3.jwtdemo.dto.CarRequest;
 import kea.sem3.jwtdemo.dto.CarResponse;
 import kea.sem3.jwtdemo.entity.Car;
 import kea.sem3.jwtdemo.repositories.CarRepository;
@@ -41,11 +42,14 @@ class CarServiceInMemoryTest
     }
 
     @Test
-    void getCar() {
+    void getCar() throws Exception {
+        //assertEquals(carService.getCar(1, false), 1);
     }
 
     @Test
     void addCar() {
+        CarRequest body = new CarRequest();
+        carService.addCar(body);
     }
 
     @Test
