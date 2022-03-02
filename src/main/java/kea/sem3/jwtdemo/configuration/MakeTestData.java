@@ -49,7 +49,9 @@ public class MakeTestData implements ApplicationRunner {
 
 
         Car car1 = new Car("Toyota1", "1993", 421);
+        Car car2 = new Car("Audi", "2003", 500);
         carRepo.save(car1);
+        carRepo.save(car2);
 
         //Create a reservation
         Reservation res1 = new Reservation(LocalDate.of(2022, 3, 1), car1, m1);
